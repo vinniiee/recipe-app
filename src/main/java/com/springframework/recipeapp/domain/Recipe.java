@@ -6,7 +6,7 @@ import java.util.Set;
 @Entity
 public class Recipe {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Lob
     private Byte[] img;
@@ -17,7 +17,10 @@ public class Recipe {
     private String source;
     private String url;
     private String directions;
-    //private Difficulty difficulty;
+//    private Difficulty difficulty;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Notes notes;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
     private Set<Ingredient> ingredients;
@@ -102,8 +105,7 @@ public class Recipe {
         this.notes = notes;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private Notes notes;
+
 
 
 }

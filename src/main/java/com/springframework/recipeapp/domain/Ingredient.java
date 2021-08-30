@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 @Entity
 public class Ingredient {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String description;
@@ -14,7 +14,9 @@ public class Ingredient {
 
     @ManyToOne
     private Recipe recipe;
-    //private UnitOfMeasure uom;
+
+    @OneToOne
+    private UnitOfMeasure uom;
 
 
     public String getDescription() {
