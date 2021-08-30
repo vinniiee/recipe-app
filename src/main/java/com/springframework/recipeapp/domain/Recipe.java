@@ -101,6 +101,14 @@ public class Recipe {
         this.directions = directions;
     }
 
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
+    }
+
     public Notes getNotes() {
         return notes;
     }
@@ -109,7 +117,11 @@ public class Recipe {
         this.notes = notes;
     }
 
+    public Set<Ingredient> getIngredients() {
+        return ingredients;
+    }
 
-
-
+    public void setIngredients(Set<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
 }
