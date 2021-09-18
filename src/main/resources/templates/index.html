@@ -5,6 +5,21 @@
     <title>Home</title>
 </head>
 <body>
-<h1 th:text="'Recipe Index Pa'"></h1>
+<h1 th:text="'Recipe Index Page'"></h1>
+<table>
+    <thead>
+    <th>ID</th>
+    <th>Description</th>
+    </thead>
+    <tbody>
+    <tr th:each="recipe : ${recipes}">
+        <td th:text="${recipe.id}">123</td>
+        <td th:text="${recipe.description}">dexnqsijdmwc</td>
+    </tr>
+    </tbody>
+
+</table>
+
+
 </body>
 </html>

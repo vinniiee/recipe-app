@@ -3,6 +3,7 @@ package com.springframework.recipeapp.domain;
 import com.springframework.recipeapp.enums.Difficulty;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -18,6 +19,7 @@ public class Recipe {
     private Integer servings;
     private String source;
     private String url;
+    @Lob
     private String directions;
 
     @Enumerated(value = EnumType.STRING)
@@ -27,13 +29,14 @@ public class Recipe {
     private Notes notes;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
-    private Set<Ingredient> ingredients;
+    private Set<Ingredient> ingredients= new HashSet<Ingredient>();
+
 
     @ManyToMany
     @JoinTable( name="recipe_category",
                 joinColumns = @JoinColumn( name = "recipe_id"),
                 inverseJoinColumns = @JoinColumn( name = "category_id"))
-    Set<Category> categories;
+    private Set<Category> categories = new HashSet<Category>();
 
     public Long getId() {
         return id;
@@ -121,14 +124,17 @@ public class Recipe {
 
     public void setNotes(Notes notes) {
         this.notes = notes;
+        notes.setRecipe(this);
     }
 
     public Set<Ingredient> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(Set<Ingredient> ingredients) {
-        this.ingredients = ingredients;
+    public void addIngredient(Ingredient ingredient) {
+        ingredients.add(ingredient);
+        ingredient.setRecipe(this);
+
     }
 
     public Set<Category> getCategories() {
