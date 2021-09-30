@@ -41,7 +41,7 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "pom.xml" }}
             - v1-dependencies-
-      - run: ./mvnw -Dmaven.test.skip=true package
+      - run: ./mvnw -Dmaven.test.skip=false package
       - save_cache:
           paths:
             - ~/.m2
