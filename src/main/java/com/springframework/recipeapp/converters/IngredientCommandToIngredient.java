@@ -2,6 +2,8 @@ package com.springframework.recipeapp.converters;
 
 import com.springframework.recipeapp.commands.IngredientCommand;
 import com.springframework.recipeapp.domain.Ingredient;
+import com.springframework.recipeapp.repositories.RecipeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
@@ -13,6 +15,9 @@ import org.springframework.stereotype.Component;
 public class IngredientCommandToIngredient implements Converter<IngredientCommand, Ingredient> {
 
     private final UnitOfMeasureCommandToUnitOfMeasure uomConverter;
+
+    @Autowired
+    private RecipeRepository recipeRepository;
 
     public IngredientCommandToIngredient(UnitOfMeasureCommandToUnitOfMeasure uomConverter) {
         this.uomConverter = uomConverter;
@@ -30,6 +35,7 @@ public class IngredientCommandToIngredient implements Converter<IngredientComman
         ingredient.setAmount(source.getAmount());
         ingredient.setDescription(source.getDescription());
         ingredient.setUom(uomConverter.convert(source.getUom()));
+        ingredient.setRecipe(recipeRepository.findById(source.getRecipeId()).get());
         return ingredient;
     }
 }

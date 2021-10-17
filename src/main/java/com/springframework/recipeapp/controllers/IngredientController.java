@@ -47,8 +47,18 @@ public class IngredientController {
         return "recipe/ingredient/ingredientForm";
     }
 
+    @RequestMapping("/recipe/{recipeId}/ingredient/new")
+    public String createIngredient(@PathVariable String recipeId,Model model){
+        IngredientCommand ingredientCommand = new IngredientCommand();
+        ingredientCommand.setRecipeId(Long.valueOf(recipeId));
+        model.addAttribute("ingredient",ingredientCommand);
+        model.addAttribute("uomList", unitOfMeasureService.listAllUoms());
+
+        return "recipe/ingredient/ingredientForm";
+    }
+
     @PostMapping("/recipe/{recipeId}/ingredient")
-    public String saveIngredient(@ModelAttribute IngredientCommand command){
+    public String updateIngredient(@ModelAttribute IngredientCommand command){
         IngredientCommand ingredientCommand = ingredientService.saveIngredientCommand(command);
         return "redirect:/recipe/"+ingredientCommand.getRecipeId()+"/ingredient/"+ingredientCommand.getId()+"/show";
     }
