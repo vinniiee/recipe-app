@@ -1,6 +1,5 @@
 package com.springframework.recipeapp.domain;
 
-import com.springframework.recipeapp.enums.Difficulty;
 import lombok.*;
 
 import javax.persistence.*;

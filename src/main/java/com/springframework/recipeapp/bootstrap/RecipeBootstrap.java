@@ -2,7 +2,7 @@ package com.springframework.recipeapp.bootstrap;
 
 
 import com.springframework.recipeapp.domain.*;
-import com.springframework.recipeapp.enums.Difficulty;
+import com.springframework.recipeapp.domain.Difficulty;
 import com.springframework.recipeapp.repositories.CategoryRepository;
 import com.springframework.recipeapp.repositories.RecipeRepository;
 import com.springframework.recipeapp.repositories.UnitOfMeasureRepository;

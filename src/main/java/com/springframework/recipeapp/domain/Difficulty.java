@@ -1,4 +1,4 @@
-package com.springframework.recipeapp.enums;
+package com.springframework.recipeapp.domain;
 
 
 public enum Difficulty {
