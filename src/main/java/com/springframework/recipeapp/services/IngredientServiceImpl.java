@@ -63,4 +63,22 @@ public class IngredientServiceImpl implements  IngredientService{
         return savedIngredientCommand;
     }
 
+    @Transactional
+    @Override
+    public void deleteByRecipeIdAndIngredientId(Long recipeId, Long ingredientId) {
+
+        Recipe recipe = recipeRepository.findById(recipeId).get();
+
+        Ingredient foundIngredient = recipe.getIngredients()
+                                        .stream()
+                                        .filter(ingredient -> ingredient.getId().equals(ingredientId))
+                                        .findFirst()
+                                        .get();
+
+        foundIngredient.setRecipe(null);
+        recipe.getIngredients().remove(foundIngredient);
+        recipeRepository.save(recipe);
+
+    }
+
 }
