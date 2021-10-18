@@ -1,6 +1,6 @@
 package com.springframework.recipeapp.commands;
 
-import com.springframework.recipeapp.enums.Difficulty;
+import com.springframework.recipeapp.domain.Difficulty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

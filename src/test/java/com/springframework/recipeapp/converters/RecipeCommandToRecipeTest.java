@@ -5,7 +5,7 @@ import com.springframework.recipeapp.commands.IngredientCommand;
 import com.springframework.recipeapp.commands.NotesCommand;
 import com.springframework.recipeapp.commands.RecipeCommand;
 import com.springframework.recipeapp.domain.Recipe;
-import com.springframework.recipeapp.enums.Difficulty;
+import com.springframework.recipeapp.domain.Difficulty;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -65,7 +65,16 @@
                                 </div>
                                 <div class="col-md-3 form-group">
                                     <label>Difficulty:</label>
-                                    <select class="form-control">
+
+                                    <select class="form-control" th:field="*{difficulty}">
+                                        <option th:each = "difficultyVal : ${T(com.springframework.recipeapp.domain.Difficulty).values()}"
+                                        th:text="${difficultyVal.name()}"
+                                        th:value="${difficultyVal.name()}"
+                                        >
+                                        </option>
+                                    </select>
+
+                                    <select class="form-control" th:remove="all">
                                         <option>Easy</option>
                                         <option>Medium</option>
                                         <option>Hard</option>
