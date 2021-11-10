@@ -12,16 +12,14 @@ import java.util.Optional;
 import static org.junit.Assert.*;
 @DataJpaTest
 @RunWith(SpringRunner.class)
-public class UnitOfMeasureRepositoryTest {
+public class UnitOfMeasureRepositoryIT {
 
     @Autowired
     UnitOfMeasureRepository unitOfMeasureRepository;
 
     @Test
     public void findByDescription() {
-
         Optional<UnitOfMeasure> uomOptional = unitOfMeasureRepository.findByDescription("Teaspoon");
         assertEquals("Teaspoon",uomOptional.get().getDescription());
-
     }
 }
