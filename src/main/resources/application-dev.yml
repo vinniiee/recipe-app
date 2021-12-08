@@ -3,9 +3,18 @@ spring:
     url: jdbc:mysql://localhost:3307/sfw_dev
     username: sfw_dev_user
     password: my_secret_pw
+    platform: mysql
   jpa:
     hibernate:
       ddl-auto: validate
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     database: mysql
     show-sql: true
+#    properties:
+#      javax:
+#        persistence:
+#          schema-generation:
+#            create-source: metadata
+#            scripts:
+#              action: create
+#              create-target: create_database_schema.sql

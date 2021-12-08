@@ -34,17 +34,38 @@ public class RecipeToRecipeCommand implements Converter<Recipe, RecipeCommand>{
         }
 
         final RecipeCommand command = new RecipeCommand();
-        command.setId(source.getId());
-        command.setCookTime(source.getCookTime());
-        command.setPrepTime(source.getPrepTime());
-        command.setDescription(source.getDescription());
-        command.setDifficulty(source.getDifficulty());
-        command.setDirections(source.getDirections());
-        command.setServings(source.getServings());
-        command.setSource(source.getSource());
-        command.setUrl(source.getUrl());
-        command.setImg(source.getImg());
-        command.setNotes(notesConverter.convert(source.getNotes()));
+        if(source.getId()!=null)
+            command.setId(source.getId());
+
+        if(source.getCookTime()!=null)
+            command.setCookTime(source.getCookTime());
+
+        if(source.getPrepTime()!=null)
+            command.setPrepTime(source.getPrepTime());
+
+        if(source.getDescription()!=null)
+            command.setDescription(source.getDescription());
+
+        if(source.getDifficulty()!=null)
+            command.setDifficulty(source.getDifficulty());
+
+        if(source.getDirections()!=null)
+            command.setDirections(source.getDirections());
+
+        if(source.getServings()!=null)
+            command.setServings(source.getServings());
+
+        if(source.getSource()!=null)
+            command.setSource(source.getSource());
+
+        if(source.getUrl()!=null)
+            command.setUrl(source.getUrl());
+
+        if(source.getImg()!=null)
+            command.setImg(source.getImg());
+
+        if(source.getNotes()!=null)
+            command.setNotes(notesConverter.convert(source.getNotes()));
 
         if (source.getCategories() != null && source.getCategories().size() > 0){
             source.getCategories()

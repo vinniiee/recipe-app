@@ -31,11 +31,21 @@ public class IngredientCommandToIngredient implements Converter<IngredientComman
         }
 
         final Ingredient ingredient = new Ingredient();
-        ingredient.setId(source.getId());
-        ingredient.setAmount(source.getAmount());
-        ingredient.setDescription(source.getDescription());
-        ingredient.setUom(uomConverter.convert(source.getUom()));
-        ingredient.setRecipe(recipeRepository.findById(source.getRecipeId()).get());
+        if(source.getId()!=null)
+            ingredient.setId(source.getId());
+
+        if (source.getAmount()!=null)
+            ingredient.setAmount(source.getAmount());
+
+        if(source.getDescription()!=null)
+            ingredient.setDescription(source.getDescription());
+
+        if(source.getUom()!=null)
+            ingredient.setUom(uomConverter.convert(source.getUom()));
+
+        if(source.getRecipeId()!=null)
+            ingredient.setRecipe(recipeRepository.findById(source.getRecipeId()).get());
+
         return ingredient;
     }
 }

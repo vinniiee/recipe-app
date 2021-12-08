@@ -26,11 +26,17 @@ public class IngredientToIngredientCommand implements Converter<Ingredient, Ingr
         }
 
         IngredientCommand ingredientCommand = new IngredientCommand();
-        ingredientCommand.setId(ingredient.getId());
-        ingredientCommand.setAmount(ingredient.getAmount());
-        ingredientCommand.setDescription(ingredient.getDescription());
-        ingredientCommand.setUom(uomConverter.convert(ingredient.getUom()));
-        ingredientCommand.setRecipeId(ingredient.getRecipe().getId());
+
+        if(ingredient.getId()!=null)
+            ingredientCommand.setId(ingredient.getId());
+        if(ingredient.getAmount()!=null)
+            ingredientCommand.setAmount(ingredient.getAmount());
+        if(ingredient.getDescription()!=null)
+            ingredientCommand.setDescription(ingredient.getDescription());
+        if(ingredient.getUom()!=null)
+            ingredientCommand.setUom(uomConverter.convert(ingredient.getUom()));
+        if(ingredient.getRecipe()!=null)
+            ingredientCommand.setRecipeId(ingredient.getRecipe().getId());
         return ingredientCommand;
     }
 }
